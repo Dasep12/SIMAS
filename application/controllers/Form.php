@@ -34,7 +34,7 @@ class Form extends CI_Controller
         $tgl_pinjam            = $this->input->post('tgl_pinjam');
         $posisi_sebelumnya     = $this->input->post('posisi_sebelumnya');
         $status_sebelumnya     = $this->input->post('status_sebelumnya');
-
+        $petugas               = $this->input->post('petugas');
         //data array peminjaman barang
         $dataPinjam     = array(
             'idpinjam'              => $idpinjam,
@@ -44,10 +44,10 @@ class Form extends CI_Controller
             'kategori_brg'          => $kategori,
             'tgl_pinjam'            => $tgl_pinjam,
             'tgl_kembali'           => $tgl_kembali,
-            'petugas'               => "",
+            'petugas'               => $petugas,
             'status'                => "dipinjam",
             'idbarang'              => $id,
-            'status_sebelumnya'     =>  $status_sebelumnya,
+            'status_sebelumnya'     => $status_sebelumnya,
             'posisi_sebelumnya'     => $posisi_sebelumnya,
         );
 

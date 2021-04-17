@@ -55,6 +55,26 @@ $url = $this->uri->segment(1);
   <script src="<?= base_url('assets/')  ?>plugins/jquery/jquery.min.js"></script>
   <!-- date-range-picker -->
   <script src="<?= base_url('assets/')  ?>plugins/daterangepicker/daterangepicker.js"></script>
+  <style type="text/css">
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      opacity: 0.5;
+      background-color: #fff;
+    }
+
+    .loading {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font: 14px arial;
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini pace-primary">
@@ -190,6 +210,14 @@ $url = $this->uri->segment(1);
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?= base_url('Laporan')  ?>" class="nav-link <?= $url === 'Laporan' ? 'active' : '' ?> ">
+                  <i class="nav-icon fas fa-folder"></i>
+                  <p>
+                    Laporan
+                  </p>
+                </a>
+              </li>
             <?php } ?>
 
           </ul>
@@ -277,5 +305,12 @@ $url = $this->uri->segment(1);
     })
   </script>
 </body>
+<div class="preloader">
+  <div class="loading">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
 
 </html>

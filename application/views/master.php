@@ -58,9 +58,15 @@
                                         <td><?= $master->status ?></td>
                                         <td><?= $master->posisi ?></td>
                                         <td>
-                                            <a onclick="return confirm('hapus ?')" href="<?= base_url('Master/del/' . $master->id) ?>" class="small btn btn-danger btn-sm"><i class="fa fa-trash"></i> </a>
-                                            <a href="<?= base_url('Master/formedit/' . $master->id) ?>" class="small btn btn-info btn-sm"><i class="fa fa-edit"></i> </a>
-                                            <a href="#" data-toggle="modal" data-id="<?= $master->id ?>" data-target="#detail_barang" class="small btn btn-success btn-sm"><i class="fa fa-search"></i> </a>
+                                            <?php
+                                            if ($master->status == "dipinjam") { ?>
+                                                <a href="javascript:info()" class="small btn btn-info btn-sm">Informasi </a>
+                                            <?php } else { ?>
+                                                <a onclick="return confirm('hapus ?')" href="<?= base_url('Master/del/' . $master->id) ?>" class="small btn btn-danger btn-sm"><i class="fa fa-trash"></i> </a>
+                                                <a href="<?= base_url('Master/formedit/' . $master->id) ?>" class="small btn btn-info btn-sm"><i class="fa fa-edit"></i> </a>
+                                                <a href="#" data-toggle="modal" data-id="<?= $master->id ?>" data-target="#detail_barang" class="small btn btn-success btn-sm"><i class="fa fa-search"></i> </a>
+
+                                            <?php } ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -137,4 +143,8 @@
                     })
                 })
             })
+
+            function info() {
+                alert('barang sedang di pinjam perubahan tidak di ijinkan');
+            }
         </script>

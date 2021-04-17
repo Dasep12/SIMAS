@@ -65,6 +65,7 @@
                             <div class="form-group">
                                 <label>Kode Barang</label>
                                 <input type="hidden" name="idbarang" id="idbarang">
+                                <input type="hidden" name="petugas" value="<?= $user->nama ?>" id="petugas">
                                 <input type="hidden" name="status_sebelumnya" id="status_sebelumnya">
                                 <input type="hidden" name="posisi_sebelumnya" id="posisi_sebelumnya">
                                 <input type="hidden" value="<?= date('Dymis') ?>" id="idpinjam" name="idpinjam" class="form-control">
@@ -109,7 +110,7 @@
                         </div>
                         <!-- end form right -->
                     </div>
-                    <button type="submit" class="btn btn-primary">Simpan <i class="fa fa-save"></i> </button>
+                    <button type="submit" id="kirimdata" class="btn btn-primary">Simpan <i class="fa fa-save"></i> </button>
                 </form>
             </div>
             <!-- /.card -->
@@ -212,13 +213,19 @@
                     cache: false,
                     processData: false,
                     contentType: false,
+                    beforeSend: function() {
+                        $("#kirimdata").prop('disabled', true);
+                    },
+                    complete: function() {
+                        $("#kirimdata").prop('disabled', false);
+                    },
                     success: function(e) {
                         if (e == "failed") {
                             toastr.error(e, '', {
                                 timeout: 3000
                             });
                         } else {
-                            alert('berhasil');
+                            alert(e);
                             location.reload();
                         }
                     }

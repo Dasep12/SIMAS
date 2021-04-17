@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2021 at 11:03 AM
+-- Generation Time: Apr 17, 2021 at 12:04 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -40,8 +40,8 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`id`, `id_user`, `nama`, `password`, `role`) VALUES
-(3, '02', 'Dasep Depiyawan', 'caf1a3dfb505ffed0d024130f58c5cfa', 1),
-(4, '12', 'Ayu Safitri', 'caf1a3dfb505ffed0d024130f58c5cfa', 2);
+(3, 'admin', 'Rima Hidayat', '202cb962ac59075b964b07152d234b70', 1),
+(4, 'petugas', 'Ayu Safitri', '202cb962ac59075b964b07152d234b70', 2);
 
 -- --------------------------------------------------------
 
@@ -59,6 +59,7 @@ CREATE TABLE `pinjam_brg` (
   `kategori_brg` varchar(100) DEFAULT NULL,
   `tgl_pinjam` date DEFAULT NULL,
   `tgl_kembali` date DEFAULT NULL,
+  `jam_kembali` time DEFAULT NULL,
   `tgl_pengembalian` date DEFAULT NULL,
   `petugas` varchar(100) DEFAULT NULL,
   `status` varchar(100) DEFAULT NULL,
@@ -70,11 +71,9 @@ CREATE TABLE `pinjam_brg` (
 -- Dumping data for table `pinjam_brg`
 --
 
-INSERT INTO `pinjam_brg` (`id`, `idpinjam`, `idbarang`, `peminjam`, `nama_brg`, `kode_brg`, `kategori_brg`, `tgl_pinjam`, `tgl_kembali`, `tgl_pengembalian`, `petugas`, `status`, `status_sebelumnya`, `posisi_sebelumnya`) VALUES
-(29, 'Mon21043225', 5, 'Resna', 'Proyektor', 'PRY-01', 'Elektronik', '2021-04-09', '2021-04-10', '2021-04-13', '', 'kembali', 'Baik/Cadangan', 'Gudang'),
-(30, 'Mon21043238', 7, 'Rima', 'Meja', 'MJ-01', 'Non-Elektronik', '2021-04-01', '2021-04-05', '2021-04-13', '', 'kembali', 'aktif', 'Kelas XX'),
-(31, 'Tue21043844', 5, 'Kepala Sekolah', 'Proyektor', 'PRY-01', 'Elektronik', '2021-04-13', '2021-04-16', NULL, '', 'dipinjam', 'Baik/Cadangan', 'Gudang'),
-(32, 'Tue21043906', 7, 'Guru BK', 'Meja', 'MJ-01', 'Non-Elektronik', '2021-04-08', '2021-04-11', '2021-04-13', '', 'kembali', 'aktif', 'Kelas XX');
+INSERT INTO `pinjam_brg` (`id`, `idpinjam`, `idbarang`, `peminjam`, `nama_brg`, `kode_brg`, `kategori_brg`, `tgl_pinjam`, `tgl_kembali`, `jam_kembali`, `tgl_pengembalian`, `petugas`, `status`, `status_sebelumnya`, `posisi_sebelumnya`) VALUES
+(36, 'Sat21045147', 11, 'dasep', 'Papan Tulis', 'PPT-01', 'Non-elektronik', '2021-04-17', '2021-04-20', '16:52:23', '2021-04-17', 'Ayu Safitri', 'kembali', 'Aktif', 'Kelas'),
+(37, 'Sat21040125', 11, 'dasep', 'Papan Tulis', 'PPT-01', 'Non-elektronik', '2021-04-13', '2021-04-16', '17:01:57', '2021-04-17', 'Ayu Safitri', 'kembali', 'Aktif', 'Kelas');
 
 -- --------------------------------------------------------
 
@@ -98,8 +97,9 @@ CREATE TABLE `tbl_barang` (
 --
 
 INSERT INTO `tbl_barang` (`id`, `nama_brg`, `kode_brg`, `kategori`, `tgl_beli`, `status`, `kondisi`, `posisi`) VALUES
-(5, 'Proyektor', 'PRY-01', 'Elektronik', '2021-01-31', 'dipinjam', 'Baik', 'Kepala Sekolah'),
-(7, 'Meja', 'MJ-01', 'Non-Elektronik', '2021-01-31', 'aktif', 'Aktif', 'Kelas XX');
+(11, 'Papan Tulis', 'PPT-01', 'Non-elektronik', '2021/12/30', 'Aktif', 'Baik', 'Kelas'),
+(12, 'Proyektor', 'PRY-01', 'Elektronik', '2021/12/30', 'Baik/Cadangan', 'Baik', 'Gudang'),
+(13, 'Bangku', 'BK-01', 'Non-elektronik', '2021/12/30', 'Rusak', 'Rusak Kakinya', 'Gudang');
 
 --
 -- Indexes for dumped tables
@@ -137,13 +137,13 @@ ALTER TABLE `akun`
 -- AUTO_INCREMENT for table `pinjam_brg`
 --
 ALTER TABLE `pinjam_brg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tbl_barang`
 --
 ALTER TABLE `tbl_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

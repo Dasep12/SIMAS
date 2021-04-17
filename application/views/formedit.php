@@ -89,7 +89,7 @@
                         </div>
                         <!-- end form right -->
                     </div>
-                    <button class="btn btn-primary">Simpan <i class="fa fa-save"></i> </button>
+                    <button id="kirimdata" class="btn btn-primary">Simpan <i class="fa fa-save"></i> </button>
                 </form>
             </div>
             <!-- /.card -->
@@ -102,7 +102,7 @@
     $(function() {
         //Date picker
         $('#reservationdate,#reservationdate2').datetimepicker({
-            format: 'L',
+            format: 'YYYY-MM-DD',
         });
 
         $("#updatedata").on('submit', function(e) {
@@ -181,6 +181,12 @@
                     cache: false,
                     processData: false,
                     contentType: false,
+                    beforeSend: function() {
+                        $("#kirimdata").prop('disabled', true);
+                    },
+                    complete: function() {
+                        $("#kirimdata").prop('disabled', false);
+                    },
                     success: function(e) {
                         alert(
                             'berhasil'

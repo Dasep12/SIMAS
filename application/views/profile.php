@@ -37,6 +37,10 @@
                         <!-- form left -->
                         <div class="col-12">
                             <div class="form-group">
+                                <label>ID User</label>
+                                <input type="text" disabled="" class="form-control" value="<?= $data->id_user ?>">
+                            </div>
+                            <div class="form-group">
                                 <label>Nama </label>
                                 <input type="hidden" name="id" value="<?= $data->id ?>">
                                 <input type="text" autocomplete="off" id="nama" class="form-control" name="nama" value="<?= $data->nama ?>">

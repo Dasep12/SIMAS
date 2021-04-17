@@ -54,7 +54,7 @@
                                         <th>Tanggal Pinjam</th>
                                         <th>Tanggal Kembali</th>
                                         <th>Tanggal di serahkan</th>
-                                        <th>Pengembalian</th>
+                                        <th>Lama Pinjam</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -69,8 +69,15 @@
                                             <td><?= $m->kategori_brg ?></td>
                                             <td><?= $m->tgl_pinjam ?></td>
                                             <td><?= $m->tgl_kembali ?></td>
-                                            <td><?= $m->tgl_pengembalian ?></td>
-                                            <td><?= $m->status ?></td>
+                                            <td><?= $m->tgl_pengembalian   . ' ' . $m->jam_kembali ?></td>
+                                            <td>
+                                                <?php
+                                                $pinjam     = new DateTime($m->tgl_pinjam);
+                                                $kembali    = new DateTime($m->tgl_pengembalian);
+                                                $selisih    = $kembali->diff($pinjam)->days + 0;
+                                                echo $selisih . " hari"
+                                                ?>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

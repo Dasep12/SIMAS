@@ -46,7 +46,8 @@ class Terpinjam extends CI_Controller
         //update data status
         $dataStatus = array(
             'status'                => "kembali",
-            'tgl_pengembalian'      => date('Y-m-d')
+            'tgl_pengembalian'      => date('Y-m-d '),
+            'jam_kembali'           => date('H:i:s')
         );
         $update  = $this->m_inventori->update("pinjam_brg", $dataStatus, array('id' => $id));
         $update1 = $this->m_inventori->update("tbl_barang", $dataUpdate, array('id' => $idbarang));

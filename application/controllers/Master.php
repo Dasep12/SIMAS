@@ -47,6 +47,7 @@ class Master extends CI_Controller
         $data = array(
             'title'     => 'Form Edit',
             'data'  => $this->m_inventori->getData(array('id' => $id), "tbl_barang")->row(),
+            'user'          => $this->m_inventori->getData(array('id' => $this->session->userdata('id')), 'akun')->row(),
         );
         $this->template->load('template/template', 'formedit', $data);
         // $this->load->view('formedit');
